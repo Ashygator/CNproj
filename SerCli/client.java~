@@ -1,0 +1,24 @@
+import java.lang.*;
+import java.io.*;
+import java.net.*;
+
+class client {
+    public static void main(String args[]) {
+	String outputLine;
+	try {
+	    Socket skt = new Socket("128.227.248.209", 1234); // lin116-15
+	    BufferedReader in = new BufferedReader(new
+						   InputStreamReader(skt.getInputStream()));
+	    System.out.print("Readt to Receive\n");
+	    while ((outputLine = in.readLine()) != null) {		
+		System.out.println(outputLine); // Read one line and output it
+                if (outputLine.equals("Bye."))
+                    break;
+            }
+	    in.close();
+	}
+	catch(Exception e) {
+	    System.out.print("Whoops! It didn't work!\n");
+	}
+    }
+}
