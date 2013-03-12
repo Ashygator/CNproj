@@ -1,5 +1,7 @@
+import src.ConversionUtil;
 
-import java.
+
+//import java.
 public class DataMessage implements RequiredConstants {
 	
 	private byte[] len = null;
@@ -17,7 +19,12 @@ public class DataMessage implements RequiredConstants {
 	}
 	
 	public void setMsgLen(byte[] MsgLen) {
+		
+		Integer temp = SideStuff.byteArrayToInt(MsgLen);
+		this.messageLength = temp.toString();
 		this.len = MsgLen;
+		this.dataLength = temp;  
+		
 	}
 	public byte[] getMsgLen() {
 		return this.len;
@@ -27,17 +34,14 @@ public class DataMessage implements RequiredConstants {
 		this.type = MsgType;
 	}
 	public byte[] getMsgType() {
-		return 
+		return this.type;
 	}
 	
 	public void setMsgPayload() {
 		
 	}
 	public byte[] getMsgPayload() {
-		
+		return this.payload;
 	}
-	
-	
-	
 	
 }
