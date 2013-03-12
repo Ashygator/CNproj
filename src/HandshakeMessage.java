@@ -44,16 +44,17 @@ public class HandshakeMessage implements RequiredConstants {
 		return this.peerID;
 	}
 	
-	public void setPeerID() {
-		
+	public void setPeerID(byte[] HandshakePeerID) {
+		this.messageHeader = HandshakePeerID.toString().trim();
+		this.header = this.messageHeader.getBytes();
 	}
 	
 	public byte[] getZeroBits() {
 		return this.zeroBits;
 	}
 	
-	public void setZeroBits() {
-		
+	public void setZeroBits(byte[] HeaderzeroBits) {
+		this.zeroBits = HeaderzeroBits;
 	}
 	
 	
