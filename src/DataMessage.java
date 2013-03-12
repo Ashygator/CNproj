@@ -8,8 +8,12 @@ public class DataMessage implements RequiredConstants {
 	private String messageType;
 	private int dataLength = DATA_MESSAGE_TYPE;
 
-	public DataMessage()
-	{
+	public DataMessage() {}
+	
+	public DataMessage(String Msg_type, byte[] Payload) {
+		// call get set 
 		
 	}
+	
+	
 }
