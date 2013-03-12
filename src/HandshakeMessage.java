@@ -34,8 +34,9 @@ public class HandshakeMessage implements RequiredConstants {
 		return this.header;
 	}
 	
-	public void setHeader() {
-		
+	public void setHeader(byte[] HandshakeHeader) {
+		this.messageHeader = HandshakeHeader.toString().trim();
+		this.header = this.messageHeader.getBytes();
 		
 	}
 	
