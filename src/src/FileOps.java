@@ -3,7 +3,9 @@ import src.RequiredConstants;
 
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * 
@@ -13,12 +15,12 @@ import java.io.FileOutputStream;
  * processes 
  */
 
-public class FileOps {
+public class FileOps implements RequiredConstants{
 
 	/**
 	 * Function to Split the file
 	 * @returns Array of bytes to fill up the 
-	 * correponding bit of the file
+	 * corresponding bit of the file
 	 */
 	public byte[] FileSplitter(FileInputStream Shared_file) {
 
@@ -27,21 +29,37 @@ public class FileOps {
 		byte buffer[] = new byte[SPLIT_SIZE];
 
 		int count = 10000;
-		while (true) {
-			int i = fis.read(buffer, 0, SPLIT_SIZE);
-			if (i == -1)
-				break;
+	
+			
+			int i;
+			try {
+				i = Shared_file.read(buffer, 0, SPLIT_SIZE);
+		
+		
 
-			String filename = "temp/" + args[1] + count;
-			FileOutputStream fos = new FileOutputStream(filename);
+			String filename = "temp/" +  + count;
+			FileOutputStream fos;
+			fos = new FileOutputStream(filename);
 			fos.write(buffer, 0, i);
 			fos.flush();
 			fos.close();
 
+			
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			++count;
+		
+		
+		return buffer;
+	}
+		public void FileJoiner(byte[] FileBytes) {
+
+		
 		}
-
-		public void FileJoiner(byte[]) {
-
-
-		}
+}
